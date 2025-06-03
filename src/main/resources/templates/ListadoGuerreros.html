@@ -1,0 +1,88 @@
+<!DOCTYPE unspecified PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado Guerreros</title>
+    <link rel="stylesheet" href="/css/stylesLG.css" /> <!-- Enlazamos el archivo CSS -->
+</head>
+<body>
+
+    <header>
+        <h1>Listado Guerreros</h1>
+        <!-- Botón de Cerrar Sesión con imagen -->
+        <button class="top-right" onclick="cerrarSesion()">
+            <img src="../webapp/img/cerrar.png" alt="Cerrar Sesión">
+        </button>
+    </header>
+
+    <!-- Botón de vehículos centrado -->
+    <div class="center-button">
+        <button onclick="irAListadoVehiculos()">Ir a Listado de Vehículos</button>
+    </div>
+
+    <div class="filter-section">
+        <label for="tipo">Tipo:</label>
+        <select id="tipo">
+            <option value="todos">Todos</option>
+            <option value="espadachín">Espadachín</option>
+            <option value="arquero">Arquero</option>
+            <option value="mago">Mago</option>
+            <!-- Agregar más tipos si es necesario -->
+        </select>
+        <button onclick="filtrarGuerreros()">Filtrar</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Vida</th>
+                <th>Ataque</th>
+                <th>Defensa</th>
+                <th>Número de Guerreros</th>
+            </tr>
+        </thead>
+        <tbody id="tablaGuerreros">
+            <tr>
+                <td>Arthas</td>
+                <td>Espadachín</td>
+                <td>100</td>
+                <td>80</td>
+                <td>60</td>
+                <td>1</td>
+            </tr>
+            <!-- Aquí se agregarían más guerreros dinámicamente -->
+        </tbody>
+    </table>
+
+    <div class="add-button-container">
+        <button onclick="añadirGuerrero()">Añadir Nuevo Guerrero</button>
+    </div>
+
+    <script>
+        function irAListadoVehiculos() {
+            alert("Ir a listado de vehículos");
+        }
+
+        function filtrarGuerreros() {
+            const tipo = document.getElementById('tipo').value;
+            alert("Filtrar guerreros por tipo: " + tipo);
+            // Aquí iría la lógica para filtrar la tabla
+        }
+
+        function añadirGuerrero() {
+            alert("Añadir nuevo guerrero");
+            // Aquí iría la lógica para agregar un nuevo guerrero
+        }
+
+        function cerrarSesion() {
+            alert("Sesión cerrada");
+            // Aquí iría la lógica para cerrar sesión
+        }
+    </script>
+
+</body>
+</html>
+
