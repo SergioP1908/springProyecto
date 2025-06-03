@@ -16,10 +16,10 @@ public class ControladosHtml {
 		return "ListadoVehiculo";
 	}
 	
-	@RequestMapping(value="/ListadoGuerrero", method=RequestMethod.GET)
+	@RequestMapping(value="/AnadirVehiculo", method=RequestMethod.GET)
 	public String metodoHTMLGuerrero () {
 
-		return "ListadoGuerreros";
+		return "AnadirVehiculo";
 	}
 	
 }
