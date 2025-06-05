@@ -1,128 +1,57 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/stylesLV.css" /> <!-- Enlazamos el archivo CSS -->
+    <meta charset="UTF-8" />
+    <title>Listado de Vehículos</title>
+    <link rel="stylesheet" href="/css/stylesLV.css" />
 </head>
-    <body>
+<body>
 
-        <h1>LISTADO DE VEHICULOS</h1>
-
-        <table border="1">
-        
-            <thead>
-                <tr>
-                    <th>&nbsp;</th>
-                    <th>Nombre</th>
-                    <th>Tipo</th>
-                    <th>Vida</th>
-                    <th>Ataque</th>
-                    <th>Defensa</th>
-                    <th>Num Guerreros</th>
-                    <th></th>
-                </tr>
-            </thead>
-            
-            <tbody>
-                <tr>
-                    <td>
-
-                    <a href="AnadirVehiculo">
-                    <img alt="Prueba de imagen" 
-                    src="https://png.pngtree.com/png-vector/20230104/ourmid/pngtree-3d-cross-x-icon-vector-in-transparent-background-png-image_6550459.png" 
-                    width="30" height="30">
-                    </a>
-                    
-                    </td>
-                    <td>Nombre1</td>
-                    <td>Tipo1</td>
-                    <td>Vida1000</td>
-                    <td>Ataque 5</td>
-                    <td>Defensa 5</td>
-                    <td>Num Guerreros</td>
-                    <td>
-                        <a href="ClienteNoValido.html">
-                            <img alt="Prueba de imagen" 
-                            src="resursos/istockphoto-1473835464-612x612-removebg-preview.png" 
-                            width="30" height="30">
-                            </a>
-                    </td>
-                
-                </tr>
-                
-                <tr>
-                    <td>
-
-                        <a href="ClienteNoValido.html">
-                        <img alt="Prueba de imagen" 
-                        src="https://png.pngtree.com/png-vector/20230104/ourmid/pngtree-3d-cross-x-icon-vector-in-transparent-background-png-image_6550459.png" 
-                        width="30" height="30">
-                        </a>
-                        
-                        </td>
-                        <td>Nombre1</td>
-                        <td>Tipo1</td>
-                        <td>Vida1000</td>
-                        <td>Ataque 5</td>
-                        <td>Defensa 5</td>
-                        <td>Num Guerreros</td>
-                        <td>
-                            <a href="ClienteNoValido.html">
-                                <img alt="Prueba de imagen" 
-                                src="resursos/istockphoto-1473835464-612x612-removebg-preview.png" 
-                                width="30" height="30">
-                                </a>
-                        </td>
-                    
-                </tr>
-                
-                <tr>
-                    <td>
-
-                        <a href="ClienteNoValido.html">
-                        <img alt="Prueba de imagen" 
-                        src="https://png.pngtree.com/png-vector/20230104/ourmid/pngtree-3d-cross-x-icon-vector-in-transparent-background-png-image_6550459.png" 
-                        width="30" height="30">
-                        </a>
-                        
-                        </td>
-                        <td>Nombre1</td>
-                        <td>Tipo1</td>
-                        <td>Vida1000</td>
-                        <td>Ataque 5</td>
-                        <td>Defensa 5</td>
-                        <td>Num Guerreros</td>
-                        <td>
-                            <a href="ClienteNoValido.html">
-                                <img alt="Prueba de imagen" 
-                                src="resursos/istockphoto-1473835464-612x612-removebg-preview.png" 
-                                width="30" height="30">
-                                </a>
-                        </td>
-                    
-                
-                </tr>
-                
-        
-            
-            </tbody>
-            
-            <tfoot>
-            
-            </tfoot>
-        
-        </table>
-
-        <br>
+    <h1>LISTADO DE VEHICULOS</h1>
     
-        <div class="buttons-container">
+    <br><a href="/anadirGuerrero"> GUERREROS</a>
 
-            <input  type="submit" onclick="window.location.href='AnadirVehiculo'"value="Añadir Vehiculo" >
-            <input type="submit" value="Iniciar Combate">
-        </div>
-    </body>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>&nbsp;</th>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Vida</th>
+                <th>Ataque</th>
+                <th>Defensa</th>
+                <th>Num Guerreros</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="vehiculo : ${vehiculos}">
+                <td>
+                    <!-- Por ejemplo, botón para editar o eliminar -->
+                    <a th:href="@{'/editarVehiculo/' + ${vehiculo.id}}">
+                        <img alt="Borrar" src="/images/edit-icon.png" width="30" height="30" />
+                    </a>
+                </td>
+                <td th:text="${vehiculo.nombre}">Nombre</td>
+                <td th:text="${vehiculo.tipo}">Tipo</td>
+           		<td th:text="${vehiculo.vida}">Vida</td>
+                <td th:text="${vehiculo.ataque}">Ataque</td>
+                <td th:text="${vehiculo.defensa}">Defensa</td>
+   
+                <td>
+                    <a href="/anadirGuerrero">
+                        <img alt="AñadirGuerreros"  width="30" height="30" />
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
+    <br>
 
+    <div class="buttons-container">
+        <input type="button" onclick="window.location.href='AnadirVehiculo'" value="Añadir Vehiculo" />
+        <input type="button" value="Iniciar Combate" />
+    </div>
+</body>
 </html>

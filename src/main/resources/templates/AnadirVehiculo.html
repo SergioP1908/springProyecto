@@ -10,43 +10,27 @@
 
 
 
-<form id="naveForm">
-     <h2>Registrar Nave Espacial</h2><br>
+<form id="naveForm" method="post" action="/anadirVehiculo">
+    <h2>Registrar Nave Espacial</h2><br>
+
     <label>Nombre:</label>
-    <input type="text" id="nombre"><br>
+    <input type="text" id="nombre" name="nombre"><br>
 
     <label>Tipo:</label>
-    <input type="text" id="tipo"><br>
+    <input type="text" id="tipo" name="tipo"><br>
+        <label>VidaTipo:</label>
+    <input type="text" id="vida" name="vida" value="1000"><br>
 
     <label>Ataque:</label>
-    <input type="number" id="ataque"><br>
+    <input type="number" id="ataque" name="ataque" value="0"><br>
 
     <label>Defensa:</label>
-    <input type="number" id="defensa"><br>
+    <input type="number" id="defensa" name="defensa" value="0"><br>
 
     <button type="submit">Guardar</button>
-   
 </form>
 
-<script>
-    document.getElementById("naveForm").addEventListener("submit", function(event) {
-        event.preventDefault();
-        const nave = {
-            nombre: document.getElementById("nombre").value,
-            tipo: document.getElementById("tipo").value,
-            ataque: document.getElementById("ataque").value,
-            defensa: document.getElementById("defensa").value
-        };
 
-        localStorage.setItem("nave", JSON.stringify(nave));
-
-        alert(`Nave Espacial Guardada:
-        Nombre: ${nave.nombre}
-        Tipo: ${nave.tipo}
-        Ataque: ${nave.ataque}
-        Defensa: ${nave.defensa}`);
-    });
-</script>
 
 </body>
 </html>

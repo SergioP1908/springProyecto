@@ -1,4 +1,6 @@
-package es.curso.springboot.springboot;
+package es.curso.springboot.springboot.controller;
+
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,15 +11,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import es.curso.springboot.springboot.entities.NaveEspacialEntity;
+import es.curso.springboot.springboot.repository.NaveRepository;
+import es.curso.springboot.springboot.services.UsuarioService;
+
 @Controller
 public class LoginController {
 
     @Autowired
     private UsuarioService usuarioService;
+    
+
 
     @GetMapping("/login")
     public String mostrarFormulario() {
-        return "login";  // el nombre de tu plantilla login.html
+        return "login";
     }
 
     @PostMapping("/login")
@@ -25,22 +33,22 @@ public class LoginController {
                                @RequestParam String contraseña,
                                Model model) {
 
+        System.out.println("Login recibido: " + usuario);
+
         boolean valido = usuarioService.validarUsuario(usuario, contraseña);
+        System.out.println("¿Usuario válido? " + valido);
         if(valido) {
-            // Login correcto, redirigir a página principal o dashboard
-            return "ListadoVehiculo";
+            return "redirect:/listadoVehiculo";
         } else {
-            // Login incorrecto, mostrar mensaje y volver al login
             model.addAttribute("error", "Usuario o contraseña incorrectos");
             return "login";
         }
     }
-    
 
-	
-	@RequestMapping(value="/AnadirVehiculo", method=RequestMethod.GET)
-	public String metodoHTMLGuerrero () {
+    @GetMapping("/anadirGuerrero")
+    public String guerreroNuevo() {
+        return "AnadirGuerrero";
+    }
 
-		return "AnadirVehiculo";
-	}
+
 }
