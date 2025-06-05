@@ -1,0 +1,58 @@
+ <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Guerreros</title>
+    <link rel="stylesheet" href="/css/stylesGuerreros.css"> <!-- Enlazamos el archivo CSS -->
+</head>
+<body>
+
+   
+
+    <form id="guerrerosForm"> 
+         <h1>Registro de Guerreros</h1>
+        <label>Nombre:</label>
+        <input type="text" id="nombre"><br>
+
+        <label>Tipo:</label>
+        <select id="tipo">
+            <option value="Espadachín">Espadachín</option>
+            <option value="Arquero">Arquero</option>
+            <option value="Mago">Mago</option>
+        </select><br>
+
+        <label>Ataque:</label>
+        <input type="number" id="ataque"><br>
+
+        <label>Defensa:</label>
+        <input type="number" id="defensa"><br>
+
+        <div class="buttons-container">
+            <button type="submit">Guardar</button>
+        </div>
+    </form>
+
+    <script>
+        document.getElementById("guerrerosForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const guerrero = {
+                nombre: document.getElementById("nombre").value,
+                tipo: document.getElementById("tipo").value,
+                ataque: document.getElementById("ataque").value,
+                defensa: document.getElementById("defensa").value
+            };
+
+            localStorage.setItem("guerrero", JSON.stringify(guerrero));
+
+            alert(`Guerrero Guardado:
+            Nombre: ${guerrero.nombre}
+            Tipo: ${guerrero.tipo}
+            Ataque: ${guerrero.ataque}
+            Defensa: ${guerrero.defensa}`);
+        });
+    </script>
+
+</body>
+</html>
+
